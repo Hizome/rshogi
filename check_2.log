@@ -1,0 +1,155 @@
+    Checking rshogi v0.1.0 (/home/harry/Play/rshogi)
+error[E0412]: cannot find type `WindowContext` in this scope
+   --> src/ui_gpui/board.rs:32:40
+    |
+ 32 |         on_click: impl Fn(Square, &mut WindowContext) + 'static + Copy,
+    |                                        ^^^^^^^^^^^^^ help: a struct with a similar name exists: `WindowControls`
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/platform.rs:400:1
+    |
+400 | pub struct WindowControls {
+    | ------------------------- similarly named struct `WindowControls` defined here
+
+error[E0412]: cannot find type `WindowContext` in this scope
+   --> src/ui_gpui/board.rs:33:60
+    |
+ 33 |         on_drag_start: impl Fn(Square, Point<Pixels>, &mut WindowContext) + 'static + Copy,
+    |                                                            ^^^^^^^^^^^^^ help: a struct with a similar name exists: `WindowControls`
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/platform.rs:400:1
+    |
+400 | pub struct WindowControls {
+    | ------------------------- similarly named struct `WindowControls` defined here
+
+error[E0412]: cannot find type `WindowContext` in this scope
+   --> src/ui_gpui/board.rs:34:51
+    |
+ 34 |         on_drag_move: impl Fn(Point<Pixels>, &mut WindowContext) + 'static + Copy,
+    |                                                   ^^^^^^^^^^^^^ help: a struct with a similar name exists: `WindowControls`
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/platform.rs:400:1
+    |
+400 | pub struct WindowControls {
+    | ------------------------- similarly named struct `WindowControls` defined here
+
+error[E0412]: cannot find type `WindowContext` in this scope
+   --> src/ui_gpui/board.rs:35:39
+    |
+ 35 |         on_drop: impl Fn(Square, &mut WindowContext) + 'static + Copy,
+    |                                       ^^^^^^^^^^^^^ help: a struct with a similar name exists: `WindowControls`
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/platform.rs:400:1
+    |
+400 | pub struct WindowControls {
+    | ------------------------- similarly named struct `WindowControls` defined here
+
+error[E0412]: cannot find type `WindowContext` in this scope
+   --> src/ui_gpui/board.rs:36:18
+    |
+ 36 |         cx: &mut WindowContext,
+    |                  ^^^^^^^^^^^^^ help: a struct with a similar name exists: `WindowControls`
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/platform.rs:400:1
+    |
+400 | pub struct WindowControls {
+    | ------------------------- similarly named struct `WindowControls` defined here
+
+error[E0412]: cannot find type `WindowContext` in this scope
+   --> src/ui_gpui/hand.rs:42:43
+    |
+ 42 |         on_click: impl Fn(PieceType, &mut WindowContext) + 'static + Copy,
+    |                                           ^^^^^^^^^^^^^ help: a struct with a similar name exists: `WindowControls`
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/platform.rs:400:1
+    |
+400 | pub struct WindowControls {
+    | ------------------------- similarly named struct `WindowControls` defined here
+
+error[E0412]: cannot find type `WindowContext` in this scope
+   --> src/ui_gpui/hand.rs:43:63
+    |
+ 43 |         on_drag_start: impl Fn(PieceType, Point<Pixels>, &mut WindowContext) + 'static + Copy,
+    |                                                               ^^^^^^^^^^^^^ help: a struct with a similar name exists: `WindowControls`
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/platform.rs:400:1
+    |
+400 | pub struct WindowControls {
+    | ------------------------- similarly named struct `WindowControls` defined here
+
+error[E0412]: cannot find type `WindowContext` in this scope
+   --> src/ui_gpui/hand.rs:44:51
+    |
+ 44 |         on_drag_move: impl Fn(Point<Pixels>, &mut WindowContext) + 'static + Copy,
+    |                                                   ^^^^^^^^^^^^^ help: a struct with a similar name exists: `WindowControls`
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/platform.rs:400:1
+    |
+400 | pub struct WindowControls {
+    | ------------------------- similarly named struct `WindowControls` defined here
+
+error[E0412]: cannot find type `WindowContext` in this scope
+   --> src/ui_gpui/hand.rs:45:34
+    |
+ 45 |         on_release: impl Fn(&mut WindowContext) + 'static + Copy,
+    |                                  ^^^^^^^^^^^^^ help: a struct with a similar name exists: `WindowControls`
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/platform.rs:400:1
+    |
+400 | pub struct WindowControls {
+    | ------------------------- similarly named struct `WindowControls` defined here
+
+error[E0412]: cannot find type `WindowContext` in this scope
+   --> src/ui_gpui/hand.rs:46:18
+    |
+ 46 |         cx: &mut WindowContext,
+    |                  ^^^^^^^^^^^^^ help: a struct with a similar name exists: `WindowControls`
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/platform.rs:400:1
+    |
+400 | pub struct WindowControls {
+    | ------------------------- similarly named struct `WindowControls` defined here
+
+error[E0412]: cannot find type `WindowContext` in this scope
+   --> src/ui_gpui/promotion.rs:24:34
+    |
+ 24 |         on_promote: impl Fn(&mut WindowContext) + 'static + Copy,
+    |                                  ^^^^^^^^^^^^^ help: a struct with a similar name exists: `WindowControls`
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/platform.rs:400:1
+    |
+400 | pub struct WindowControls {
+    | ------------------------- similarly named struct `WindowControls` defined here
+
+error[E0412]: cannot find type `WindowContext` in this scope
+   --> src/ui_gpui/promotion.rs:25:33
+    |
+ 25 |         on_cancel: impl Fn(&mut WindowContext) + 'static + Copy,
+    |                                 ^^^^^^^^^^^^^ help: a struct with a similar name exists: `WindowControls`
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/platform.rs:400:1
+    |
+400 | pub struct WindowControls {
+    | ------------------------- similarly named struct `WindowControls` defined here
+
+error[E0412]: cannot find type `WindowContext` in this scope
+   --> src/ui_gpui/promotion.rs:26:32
+    |
+ 26 |         on_close: impl Fn(&mut WindowContext) + 'static + Copy,
+    |                                ^^^^^^^^^^^^^ help: a struct with a similar name exists: `WindowControls`
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/platform.rs:400:1
+    |
+400 | pub struct WindowControls {
+    | ------------------------- similarly named struct `WindowControls` defined here
+
+warning: unused import: `gpui::prelude::FluentBuilder as _`
+ --> src/ui_gpui/promotion.rs:2:5
+  |
+2 | use gpui::prelude::FluentBuilder as _;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+For more information about this error, try `rustc --explain E0412`.
+warning: `rshogi` (bin "rshogi") generated 1 warning
+error: could not compile `rshogi` (bin "rshogi") due to 13 previous errors; 1 warning emitted

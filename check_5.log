@@ -1,0 +1,44 @@
+    Checking rshogi v0.1.0 (/home/harry/Play/rshogi)
+warning: unused import: `gpui::prelude::FluentBuilder as _`
+ --> src/ui_gpui/promotion.rs:2:5
+  |
+2 | use gpui::prelude::FluentBuilder as _;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+error[E0599]: no method named `render_piece` found for struct `Board` in the current scope
+   --> src/ui_gpui/app.rs:149:35
+    |
+149 |                 .child(self.board.render_piece(piece, 48.0)) // helper from board
+    |                        -----------^^^^^^^^^^^^-------------
+    |                        |          |
+    |                        |          this is an associated function, not a method
+    |                        help: use associated function syntax instead: `Board::render_piece(piece, 48.0)`
+    |
+   ::: src/ui_gpui/board.rs:9:1
+    |
+  9 | pub struct Board {
+    | ---------------- method `render_piece` not found for this struct
+    |
+    = note: found the following associated functions; to be used as methods, functions must have a `self` parameter
+note: the candidate is defined in an impl for the type `Board`
+   --> src/ui_gpui/board.rs:18:5
+    |
+ 18 |     pub fn render_piece(piece: Piece, size: f32) -> AnyElement {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+help: there is a method `render` with a similar name, but with different arguments
+   --> src/ui_gpui/board.rs:28:5
+    |
+ 28 | /     pub fn render(
+ 29 | |         &self,
+ 30 | |         game: &GameState,
+ 31 | |         drag_source: Option<Square>,
+...   |
+ 35 | |         on_drop: impl Fn(Square, &mut App) + 'static + Clone,
+ 36 | |     ) -> AnyElement {
+    | |___________________^
+
+For more information about this error, try `rustc --explain E0599`.
+warning: `rshogi` (bin "rshogi") generated 1 warning
+error: could not compile `rshogi` (bin "rshogi") due to 1 previous error; 1 warning emitted

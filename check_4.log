@@ -1,0 +1,318 @@
+    Checking rshogi v0.1.0 (/home/harry/Play/rshogi)
+warning: unused import: `gpui::prelude::FluentBuilder as _`
+ --> src/ui_gpui/promotion.rs:2:5
+  |
+2 | use gpui::prelude::FluentBuilder as _;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+error[E0382]: use of moved value: `on_drag_start`
+  --> src/ui_gpui/board.rs:75:59
+   |
+33 |         on_drag_start: impl Fn(Square, Point<Pixels>, &mut App) + 'static,
+   |         ------------- move occurs because `on_drag_start` has type `impl Fn(Square, Point<Pixels>, &mut App) + 'static`, which does not implement the `Copy` trait
+...
+39 |         for row in 0..9 {
+   |         --------------- inside of this loop
+40 |             for col in 0..9 {
+   |             --------------- inside of this loop
+...
+75 |                         .on_mouse_down(MouseButton::Left, move |e, _, cx| {
+   |                                                           ^^^^^^^^^^^^^^^ value moved into closure here, in previous iteration of loop
+76 |                             on_drag_start(sq, e.position, cx);
+   |                             ------------- use occurs due to use in closure
+   |
+help: if `impl Fn(Square, Point<Pixels>, &mut App) + 'static` implemented `Clone`, you could clone the value
+  --> src/ui_gpui/board.rs:33:24
+   |
+33 |         on_drag_start: impl Fn(Square, Point<Pixels>, &mut App) + 'static,
+   |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ consider constraining this type parameter with `Clone`
+...
+76 |                             on_drag_start(sq, e.position, cx);
+   |                             ------------- you could clone this value
+help: consider moving the expression out of the loop so it is only moved once
+   |
+39 ~         let mut value = on_drag_start(sq, e.position, cx);
+40 ~         for row in 0..9 {
+41 |             for col in 0..9 {
+...
+76 |                         .on_mouse_down(MouseButton::Left, move |e, _, cx| {
+77 ~                             value;
+   |
+
+error[E0382]: use of moved value: `on_drag_move`
+  --> src/ui_gpui/board.rs:80:40
+   |
+34 |         on_drag_move: impl Fn(Point<Pixels>, &mut App) + 'static,
+   |         ------------ move occurs because `on_drag_move` has type `impl Fn(Point<Pixels>, &mut App) + 'static`, which does not implement the `Copy` trait
+...
+39 |         for row in 0..9 {
+   |         --------------- inside of this loop
+40 |             for col in 0..9 {
+   |             --------------- inside of this loop
+...
+80 |                         .on_mouse_move(move |e, _, cx| {
+   |                                        ^^^^^^^^^^^^^^^ value moved into closure here, in previous iteration of loop
+81 |                             on_drag_move(e.position, cx);
+   |                             ------------ use occurs due to use in closure
+   |
+help: if `impl Fn(Point<Pixels>, &mut App) + 'static` implemented `Clone`, you could clone the value
+  --> src/ui_gpui/board.rs:34:23
+   |
+34 |         on_drag_move: impl Fn(Point<Pixels>, &mut App) + 'static,
+   |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ consider constraining this type parameter with `Clone`
+...
+81 |                             on_drag_move(e.position, cx);
+   |                             ------------ you could clone this value
+help: consider moving the expression out of the loop so it is only moved once
+   |
+39 ~         let mut value = on_drag_move(e.position, cx);
+40 ~         for row in 0..9 {
+41 |             for col in 0..9 {
+...
+81 |                         .on_mouse_move(move |e, _, cx| {
+82 ~                             value;
+   |
+
+error[E0382]: use of moved value: `on_drop`
+  --> src/ui_gpui/board.rs:83:57
+   |
+35 |         on_drop: impl Fn(Square, &mut App) + 'static,
+   |         ------- move occurs because `on_drop` has type `impl Fn(Square, &mut App) + 'static`, which does not implement the `Copy` trait
+...
+39 |         for row in 0..9 {
+   |         --------------- inside of this loop
+40 |             for col in 0..9 {
+   |             --------------- inside of this loop
+...
+83 |                         .on_mouse_up(MouseButton::Left, move |_, _, cx| {
+   |                                                         ^^^^^^^^^^^^^^^ value moved into closure here, in previous iteration of loop
+84 |                             on_drop(sq, cx);
+   |                             ------- use occurs due to use in closure
+   |
+help: if `impl Fn(Square, &mut App) + 'static` implemented `Clone`, you could clone the value
+  --> src/ui_gpui/board.rs:35:18
+   |
+35 |         on_drop: impl Fn(Square, &mut App) + 'static,
+   |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ consider constraining this type parameter with `Clone`
+...
+84 |                             on_drop(sq, cx);
+   |                             ------- you could clone this value
+help: consider moving the expression out of the loop so it is only moved once
+   |
+39 ~         let mut value = on_drop(sq, cx);
+40 ~         for row in 0..9 {
+41 |             for col in 0..9 {
+...
+84 |                         .on_mouse_up(MouseButton::Left, move |_, _, cx| {
+85 ~                             value;
+   |
+
+error[E0382]: use of moved value: `on_click`
+  --> src/ui_gpui/board.rs:86:35
+   |
+32 |         on_click: impl Fn(Square, &mut App) + 'static,
+   |         -------- move occurs because `on_click` has type `impl Fn(Square, &mut App) + 'static`, which does not implement the `Copy` trait
+...
+39 |         for row in 0..9 {
+   |         --------------- inside of this loop
+40 |             for col in 0..9 {
+   |             --------------- inside of this loop
+...
+86 |                         .on_click(move |_, _, cx| {
+   |                                   ^^^^^^^^^^^^^^^ value moved into closure here, in previous iteration of loop
+87 |                              on_click(sq, cx);
+   |                              -------- use occurs due to use in closure
+   |
+help: if `impl Fn(Square, &mut App) + 'static` implemented `Clone`, you could clone the value
+  --> src/ui_gpui/board.rs:32:19
+   |
+32 |         on_click: impl Fn(Square, &mut App) + 'static,
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ consider constraining this type parameter with `Clone`
+...
+87 |                              on_click(sq, cx);
+   |                              -------- you could clone this value
+help: consider moving the expression out of the loop so it is only moved once
+   |
+39 ~         let mut value = on_click(sq, cx);
+40 ~         for row in 0..9 {
+41 |             for col in 0..9 {
+...
+87 |                         .on_click(move |_, _, cx| {
+88 ~                              value;
+   |
+
+error[E0521]: borrowed data escapes outside of method
+  --> src/ui_gpui/hand.rs:80:17
+   |
+38 |           &self,
+   |           -----
+   |           |
+   |           `self` is a reference that is only valid in the method body
+   |           let's call the lifetime of this reference `'1`
+...
+80 | /                 div()
+81 | |                     .id(cell_id)
+82 | |                     .w(px(self.cell_size))
+83 | |                     .h(px(self.cell_size))
+...  |
+94 | |                     })
+   | |                      ^
+   | |                      |
+   | |______________________`self` escapes the method body here
+   |                        argument requires that `'1` must outlive `'static`
+
+error[E0521]: borrowed data escapes outside of method
+  --> src/ui_gpui/hand.rs:80:17
+   |
+39 |           game: &GameState,
+   |           ----  - let's call the lifetime of this reference `'2`
+   |           |
+   |           `game` is a reference that is only valid in the method body
+...
+80 | /                 div()
+81 | |                     .id(cell_id)
+82 | |                     .w(px(self.cell_size))
+83 | |                     .h(px(self.cell_size))
+...  |
+94 | |                     })
+   | |                      ^
+   | |                      |
+   | |______________________`game` escapes the method body here
+   |                        argument requires that `'2` must outlive `'static`
+
+error[E0382]: use of moved value: `on_drag_start`
+  --> src/ui_gpui/hand.rs:90:55
+   |
+43 |         on_drag_start: impl Fn(PieceType, Point<Pixels>, &mut App) + 'static,
+   |         ------------- move occurs because `on_drag_start` has type `impl Fn(PieceType, Point<Pixels>, &mut App) + 'static`, which does not implement the `Copy` trait
+...
+60 |         for slot in slots {
+   |         ----------------- inside of this loop
+...
+90 |                     .on_mouse_down(MouseButton::Left, move |e, _, cx| {
+   |                                                       ^^^^^^^^^^^^^^^ value moved into closure here, in previous iteration of loop
+91 |                         if game.hand_count(self.color, piece_type) > 0 {
+92 |                              on_drag_start(piece_type, e.position, cx);
+   |                              ------------- use occurs due to use in closure
+   |
+help: if `impl Fn(PieceType, Point<Pixels>, &mut App) + 'static` implemented `Clone`, you could clone the value
+  --> src/ui_gpui/hand.rs:43:24
+   |
+43 |         on_drag_start: impl Fn(PieceType, Point<Pixels>, &mut App) + 'static,
+   |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ consider constraining this type parameter with `Clone`
+...
+92 |                              on_drag_start(piece_type, e.position, cx);
+   |                              ------------- you could clone this value
+help: consider moving the expression out of the loop so it is only moved once
+   |
+60 ~         let mut value = on_drag_start(piece_type, e.position, cx);
+61 ~         for slot in slots {
+62 |             let child = if let Some(piece_type) = slot {
+...
+92 |                         if game.hand_count(self.color, piece_type) > 0 {
+93 ~                              value;
+   |
+
+error[E0382]: use of moved value: `on_drag_move`
+  --> src/ui_gpui/hand.rs:95:37
+   |
+44 |         on_drag_move: impl Fn(Point<Pixels>, &mut App) + 'static,
+   |         ------------ move occurs because `on_drag_move` has type `impl Fn(Point<Pixels>, &mut App) + 'static`, which does not implement the `Copy` trait
+...
+60 |         for slot in slots {
+   |         ----------------- inside of this loop
+...
+95 |                      .on_mouse_move(move |e, _, cx| {
+   |                                     ^^^^^^^^^^^^^^^ value moved into closure here, in previous iteration of loop
+96 |                         on_drag_move(e.position, cx);
+   |                         ------------ use occurs due to use in closure
+   |
+help: if `impl Fn(Point<Pixels>, &mut App) + 'static` implemented `Clone`, you could clone the value
+  --> src/ui_gpui/hand.rs:44:23
+   |
+44 |         on_drag_move: impl Fn(Point<Pixels>, &mut App) + 'static,
+   |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ consider constraining this type parameter with `Clone`
+...
+96 |                         on_drag_move(e.position, cx);
+   |                         ------------ you could clone this value
+help: consider moving the expression out of the loop so it is only moved once
+   |
+60 ~         let mut value = on_drag_move(e.position, cx);
+61 ~         for slot in slots {
+62 |             let child = if let Some(piece_type) = slot {
+...
+96 |                      .on_mouse_move(move |e, _, cx| {
+97 ~                         value;
+   |
+
+error[E0382]: use of moved value: `on_release`
+  --> src/ui_gpui/hand.rs:98:53
+   |
+45 |         on_release: impl Fn(&mut App) + 'static,
+   |         ---------- move occurs because `on_release` has type `impl Fn(&mut App) + 'static`, which does not implement the `Copy` trait
+...
+60 |         for slot in slots {
+   |         ----------------- inside of this loop
+...
+98 |                     .on_mouse_up(MouseButton::Left, move |_, _, cx| {
+   |                                                     ^^^^^^^^^^^^^^^ value moved into closure here, in previous iteration of loop
+99 |                         on_release(cx);
+   |                         ---------- use occurs due to use in closure
+   |
+help: if `impl Fn(&mut App) + 'static` implemented `Clone`, you could clone the value
+  --> src/ui_gpui/hand.rs:45:21
+   |
+45 |         on_release: impl Fn(&mut App) + 'static,
+   |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^ consider constraining this type parameter with `Clone`
+...
+99 |                         on_release(cx);
+   |                         ---------- you could clone this value
+help: consider moving the expression out of the loop so it is only moved once
+   |
+60 ~         let mut value = on_release(cx);
+61 ~         for slot in slots {
+62 |             let child = if let Some(piece_type) = slot {
+...
+99 |                     .on_mouse_up(MouseButton::Left, move |_, _, cx| {
+100~                         value;
+   |
+
+error[E0382]: use of moved value: `on_click`
+   --> src/ui_gpui/hand.rs:101:31
+    |
+ 42 |         on_click: impl Fn(PieceType, &mut App) + 'static,
+    |         -------- move occurs because `on_click` has type `impl Fn(PieceType, &mut App) + 'static`, which does not implement the `Copy` trait
+...
+ 60 |         for slot in slots {
+    |         ----------------- inside of this loop
+...
+101 |                     .on_click(move |_, _, cx| {
+    |                               ^^^^^^^^^^^^^^^ value moved into closure here, in previous iteration of loop
+102 |                          if game.hand_count(self.color, piece_type) > 0 {
+103 |                              on_click(piece_type, cx);
+    |                              -------- use occurs due to use in closure
+    |
+help: if `impl Fn(PieceType, &mut App) + 'static` implemented `Clone`, you could clone the value
+   --> src/ui_gpui/hand.rs:42:19
+    |
+ 42 |         on_click: impl Fn(PieceType, &mut App) + 'static,
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ consider constraining this type parameter with `Clone`
+...
+103 |                              on_click(piece_type, cx);
+    |                              -------- you could clone this value
+help: consider moving the expression out of the loop so it is only moved once
+    |
+ 60 ~         let mut value = on_click(piece_type, cx);
+ 61 ~         for slot in slots {
+ 62 |             let child = if let Some(piece_type) = slot {
+...
+103 |                          if game.hand_count(self.color, piece_type) > 0 {
+104 ~                              value;
+    |
+
+Some errors have detailed explanations: E0382, E0521.
+For more information about an error, try `rustc --explain E0382`.
+warning: `rshogi` (bin "rshogi") generated 1 warning
+error: could not compile `rshogi` (bin "rshogi") due to 10 previous errors; 1 warning emitted

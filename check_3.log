@@ -1,0 +1,285 @@
+    Checking rshogi v0.1.0 (/home/harry/Play/rshogi)
+warning: unused import: `gpui::prelude::FluentBuilder as _`
+ --> src/ui_gpui/promotion.rs:2:5
+  |
+2 | use gpui::prelude::FluentBuilder as _;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+error[E0277]: the trait bound `Entity<MigrationShell>: std::marker::Copy` is not satisfied in `{closure@src/ui_gpui/app.rs:162:17: 162:26}`
+   --> src/ui_gpui/app.rs:162:17
+    |
+160 |               Some(PromotionOverlay::render(
+    |                    ------------------------ required by a bound introduced by this call
+161 |                   piece,
+162 |                   move |cx| {
+    |                   ^--------
+    |                   |
+    |  _________________within this `{closure@src/ui_gpui/app.rs:162:17: 162:26}`
+    | |
+163 | |                     promote_entity.update(cx, |this, cx| {
+164 | |                         this.dispatch(Action::ChoosePromotion(true));
+165 | |                         cx.notify();
+166 | |                     });
+167 | |                 },
+    | |_________________^ within `{closure@src/ui_gpui/app.rs:162:17: 162:26}`, the trait `std::marker::Copy` is not implemented for `Entity<MigrationShell>`
+    |
+note: required because it's used within this closure
+   --> src/ui_gpui/app.rs:162:17
+    |
+162 |                 move |cx| {
+    |                 ^^^^^^^^^
+note: required by a bound in `PromotionOverlay::render`
+   --> src/ui_gpui/promotion.rs:24:58
+    |
+ 22 |     pub fn render<V: 'static>(
+    |            ------ required by a bound in this associated function
+ 23 |         piece: Piece,
+ 24 |         on_promote: impl Fn(&mut Context<V>) + 'static + Copy,
+    |                                                          ^^^^ required by this bound in `PromotionOverlay::render`
+
+error[E0277]: the trait bound `Entity<MigrationShell>: std::marker::Copy` is not satisfied in `{closure@src/ui_gpui/app.rs:168:17: 168:26}`
+   --> src/ui_gpui/app.rs:168:17
+    |
+160 |               Some(PromotionOverlay::render(
+    |                    ------------------------ required by a bound introduced by this call
+...
+168 |                   move |cx| {
+    |                   ^--------
+    |                   |
+    |  _________________within this `{closure@src/ui_gpui/app.rs:168:17: 168:26}`
+    | |
+169 | |                     keep_entity.update(cx, |this, cx| {
+170 | |                         this.dispatch(Action::ChoosePromotion(false));
+171 | |                         cx.notify();
+172 | |                     });
+173 | |                 },
+    | |_________________^ within `{closure@src/ui_gpui/app.rs:168:17: 168:26}`, the trait `std::marker::Copy` is not implemented for `Entity<MigrationShell>`
+    |
+note: required because it's used within this closure
+   --> src/ui_gpui/app.rs:168:17
+    |
+168 |                 move |cx| {
+    |                 ^^^^^^^^^
+note: required by a bound in `PromotionOverlay::render`
+   --> src/ui_gpui/promotion.rs:25:57
+    |
+ 22 |     pub fn render<V: 'static>(
+    |            ------ required by a bound in this associated function
+...
+ 25 |         on_cancel: impl Fn(&mut Context<V>) + 'static + Copy,
+    |                                                         ^^^^ required by this bound in `PromotionOverlay::render`
+
+error[E0277]: the trait bound `Entity<MigrationShell>: std::marker::Copy` is not satisfied in `{closure@src/ui_gpui/app.rs:174:17: 174:26}`
+   --> src/ui_gpui/app.rs:174:17
+    |
+160 |               Some(PromotionOverlay::render(
+    |                    ------------------------ required by a bound introduced by this call
+...
+174 |                   move |cx| {
+    |                   ^--------
+    |                   |
+    |  _________________within this `{closure@src/ui_gpui/app.rs:174:17: 174:26}`
+    | |
+175 | |                     cancel_entity.update(cx, |this, cx| {
+176 | |                         this.dispatch(Action::CancelPromotion);
+177 | |                         cx.notify();
+178 | |                     });
+179 | |                 },
+    | |_________________^ within `{closure@src/ui_gpui/app.rs:174:17: 174:26}`, the trait `std::marker::Copy` is not implemented for `Entity<MigrationShell>`
+    |
+note: required because it's used within this closure
+   --> src/ui_gpui/app.rs:174:17
+    |
+174 |                 move |cx| {
+    |                 ^^^^^^^^^
+note: required by a bound in `PromotionOverlay::render`
+   --> src/ui_gpui/promotion.rs:26:56
+    |
+ 22 |     pub fn render<V: 'static>(
+    |            ------ required by a bound in this associated function
+...
+ 26 |         on_close: impl Fn(&mut Context<V>) + 'static + Copy,
+    |                                                        ^^^^ required by this bound in `PromotionOverlay::render`
+
+error[E0308]: mismatched types
+  --> src/ui_gpui/board.rs:78:59
+   |
+78 | ...                   on_drag_start(sq, e.position, cx);
+   |                       -------------                 ^^ expected `&mut Context<'_, V>`, found `&mut App`
+   |                       |
+   |                       arguments to this function are incorrect
+   |
+   = note: expected mutable reference `&mut gpui::Context<'_, V>`
+              found mutable reference `&mut gpui::App`
+note: type parameter defined here
+  --> src/ui_gpui/board.rs:33:24
+   |
+33 |         on_drag_start: impl Fn(Square, Point<Pixels>, &mut Context<V>) + 'static + Copy,
+   |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0308]: mismatched types
+  --> src/ui_gpui/board.rs:83:54
+   |
+83 | ...                   on_drag_move(e.position, cx);
+   |                       ------------             ^^ expected `&mut Context<'_, V>`, found `&mut App`
+   |                       |
+   |                       arguments to this function are incorrect
+   |
+   = note: expected mutable reference `&mut gpui::Context<'_, V>`
+              found mutable reference `&mut gpui::App`
+note: type parameter defined here
+  --> src/ui_gpui/board.rs:34:23
+   |
+34 |         on_drag_move: impl Fn(Point<Pixels>, &mut Context<V>) + 'static + Copy,
+   |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0308]: mismatched types
+  --> src/ui_gpui/board.rs:86:41
+   |
+86 | ...                   on_drop(sq, cx);
+   |                       -------     ^^ expected `&mut Context<'_, V>`, found `&mut App`
+   |                       |
+   |                       arguments to this function are incorrect
+   |
+   = note: expected mutable reference `&mut gpui::Context<'_, V>`
+              found mutable reference `&mut gpui::App`
+note: type parameter defined here
+  --> src/ui_gpui/board.rs:35:18
+   |
+35 |         on_drop: impl Fn(Square, &mut Context<V>) + 'static + Copy,
+   |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0308]: mismatched types
+  --> src/ui_gpui/board.rs:89:43
+   |
+89 | ...                   on_click(sq, cx);
+   |                       --------     ^^ expected `&mut Context<'_, V>`, found `&mut App`
+   |                       |
+   |                       arguments to this function are incorrect
+   |
+   = note: expected mutable reference `&mut gpui::Context<'_, V>`
+              found mutable reference `&mut gpui::App`
+note: type parameter defined here
+  --> src/ui_gpui/board.rs:32:19
+   |
+32 |         on_click: impl Fn(Square, &mut Context<V>) + 'static + Copy,
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0308]: mismatched types
+  --> src/ui_gpui/hand.rs:93:68
+   |
+93 | ...                   on_drag_start(piece_type, e.position, cx);
+   |                       -------------                         ^^ expected `&mut Context<'_, V>`, found `&mut App`
+   |                       |
+   |                       arguments to this function are incorrect
+   |
+   = note: expected mutable reference `&mut gpui::Context<'_, V>`
+              found mutable reference `&mut gpui::App`
+note: type parameter defined here
+  --> src/ui_gpui/hand.rs:43:24
+   |
+43 |         on_drag_start: impl Fn(PieceType, Point<Pixels>, &mut Context<V>) + 'static + Copy,
+   |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0308]: mismatched types
+  --> src/ui_gpui/hand.rs:97:50
+   |
+97 |                         on_drag_move(e.position, cx);
+   |                         ------------             ^^ expected `&mut Context<'_, V>`, found `&mut App`
+   |                         |
+   |                         arguments to this function are incorrect
+   |
+   = note: expected mutable reference `&mut gpui::Context<'_, V>`
+              found mutable reference `&mut gpui::App`
+note: type parameter defined here
+  --> src/ui_gpui/hand.rs:44:23
+   |
+44 |         on_drag_move: impl Fn(Point<Pixels>, &mut Context<V>) + 'static + Copy,
+   |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0308]: mismatched types
+   --> src/ui_gpui/hand.rs:100:36
+    |
+100 |                         on_release(cx);
+    |                         ---------- ^^ expected `&mut Context<'_, V>`, found `&mut App`
+    |                         |
+    |                         arguments to this function are incorrect
+    |
+    = note: expected mutable reference `&mut gpui::Context<'_, V>`
+               found mutable reference `&mut gpui::App`
+note: type parameter defined here
+   --> src/ui_gpui/hand.rs:45:21
+    |
+ 45 |         on_release: impl Fn(&mut Context<V>) + 'static + Copy,
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0308]: mismatched types
+   --> src/ui_gpui/hand.rs:104:51
+    |
+104 | ...                   on_click(piece_type, cx);
+    |                       --------             ^^ expected `&mut Context<'_, V>`, found `&mut App`
+    |                       |
+    |                       arguments to this function are incorrect
+    |
+    = note: expected mutable reference `&mut gpui::Context<'_, V>`
+               found mutable reference `&mut gpui::App`
+note: type parameter defined here
+   --> src/ui_gpui/hand.rs:42:19
+    |
+ 42 |         on_click: impl Fn(PieceType, &mut Context<V>) + 'static + Copy,
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0308]: mismatched types
+  --> src/ui_gpui/promotion.rs:75:74
+   |
+75 | ...                   .on_click(move |_, _, cx| on_promote(cx)),
+   |                                                 ---------- ^^ expected `&mut Context<'_, V>`, found `&mut App`
+   |                                                 |
+   |                                                 arguments to this function are incorrect
+   |
+   = note: expected mutable reference `&mut gpui::Context<'_, V>`
+              found mutable reference `&mut gpui::App`
+note: type parameter defined here
+  --> src/ui_gpui/promotion.rs:24:21
+   |
+24 |         on_promote: impl Fn(&mut Context<V>) + 'static + Copy,
+   |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0308]: mismatched types
+  --> src/ui_gpui/promotion.rs:80:73
+   |
+80 | ...                   .on_click(move |_, _, cx| on_cancel(cx)),
+   |                                                 --------- ^^ expected `&mut Context<'_, V>`, found `&mut App`
+   |                                                 |
+   |                                                 arguments to this function are incorrect
+   |
+   = note: expected mutable reference `&mut gpui::Context<'_, V>`
+              found mutable reference `&mut gpui::App`
+note: type parameter defined here
+  --> src/ui_gpui/promotion.rs:25:20
+   |
+25 |         on_cancel: impl Fn(&mut Context<V>) + 'static + Copy,
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0308]: mismatched types
+  --> src/ui_gpui/promotion.rs:85:72
+   |
+85 | ...                   .on_click(move |_, _, cx| on_close(cx)),
+   |                                                 -------- ^^ expected `&mut Context<'_, V>`, found `&mut App`
+   |                                                 |
+   |                                                 arguments to this function are incorrect
+   |
+   = note: expected mutable reference `&mut gpui::Context<'_, V>`
+              found mutable reference `&mut gpui::App`
+note: type parameter defined here
+  --> src/ui_gpui/promotion.rs:26:19
+   |
+26 |         on_close: impl Fn(&mut Context<V>) + 'static + Copy,
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Some errors have detailed explanations: E0277, E0308.
+For more information about an error, try `rustc --explain E0277`.
+warning: `rshogi` (bin "rshogi") generated 1 warning
+error: could not compile `rshogi` (bin "rshogi") due to 14 previous errors; 1 warning emitted

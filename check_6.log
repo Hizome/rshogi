@@ -1,0 +1,249 @@
+    Checking rshogi v0.1.0 (/home/harry/Play/rshogi)
+warning: unused import: `gpui::prelude::FluentBuilder as _`
+ --> src/ui_gpui/promotion.rs:2:5
+  |
+2 | use gpui::prelude::FluentBuilder as _;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: struct `RShogiApp` is never constructed
+  --> src/app/state.rs:13:12
+   |
+13 | pub struct RShogiApp {
+   |            ^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: associated items `new`, `dispatch`, and `ensure_assets_loaded` are never used
+  --> src/app/state.rs:22:12
+   |
+21 | impl RShogiApp {
+   | -------------- associated items in this implementation
+22 |     pub fn new() -> Self {
+   |            ^^^
+...
+32 |     fn dispatch(&mut self, action: Action) {
+   |        ^^^^^^^^
+...
+36 |     fn ensure_assets_loaded(&mut self, ctx: &egui::Context) {
+   |        ^^^^^^^^^^^^^^^^^^^^
+
+warning: struct `DragState` is never constructed
+   --> src/app/state.rs:206:8
+    |
+206 | struct DragState {
+    |        ^^^^^^^^^
+
+warning: enum `DragSource` is never used
+   --> src/app/state.rs:212:6
+    |
+212 | enum DragSource {
+    |      ^^^^^^^^^^
+
+warning: function `draw_drag_piece` is never used
+   --> src/app/state.rs:217:4
+    |
+217 | fn draw_drag_piece(ctx: &egui::Context, assets: &UiAssets, piece: Piece) {
+    |    ^^^^^^^^^^^^^^^
+
+warning: function `reduce` is never used
+ --> src/app/update.rs:5:8
+  |
+5 | pub fn reduce(app: &mut RShogiApp, action: Action) {
+  |        ^^^^^^
+
+warning: function `piece_label` is never used
+   --> src/core/game.rs:414:8
+    |
+414 | pub fn piece_label(piece: Piece) -> String {
+    |        ^^^^^^^^^^^
+
+warning: function `piece_type_label` is never used
+   --> src/core/game.rs:439:8
+    |
+439 | pub fn piece_type_label(piece_type: PieceType) -> &'static str {
+    |        ^^^^^^^^^^^^^^^^
+
+warning: function `promoted_piece_type` is never used
+   --> src/core/game.rs:458:8
+    |
+458 | pub fn promoted_piece_type(piece_type: PieceType) -> PieceType {
+    |        ^^^^^^^^^^^^^^^^^^^
+
+warning: constant `PIECE_DRAW_SIZE` is never used
+ --> src/ui/assets.rs:7:11
+  |
+7 | pub const PIECE_DRAW_SIZE: u32 = 52;
+  |           ^^^^^^^^^^^^^^^
+
+warning: struct `UiAssets` is never constructed
+  --> src/ui/assets.rs:10:12
+   |
+10 | pub struct UiAssets {
+   |            ^^^^^^^^
+
+warning: function `load_assets` is never used
+  --> src/ui/assets.rs:15:8
+   |
+15 | pub fn load_assets(ctx: &Context) -> Result<UiAssets, String> {
+   |        ^^^^^^^^^^^
+
+warning: function `load_board_texture` is never used
+  --> src/ui/assets.rs:81:4
+   |
+81 | fn load_board_texture(ctx: &Context, path: &Path) -> Result<TextureHandle, String> {
+   |    ^^^^^^^^^^^^^^^^^^
+
+warning: function `load_svg_texture` is never used
+  --> src/ui/assets.rs:89:4
+   |
+89 | fn load_svg_texture(
+   |    ^^^^^^^^^^^^^^^^
+
+warning: constant `BOARD_SIZE` is never used
+ --> src/ui/board.rs:7:7
+  |
+7 | const BOARD_SIZE: usize = 9;
+  |       ^^^^^^^^^^
+
+warning: constant `CELL_SIZE` is never used
+ --> src/ui/board.rs:8:7
+  |
+8 | const CELL_SIZE: f32 = 56.0;
+  |       ^^^^^^^^^
+
+warning: struct `BoardUiOutput` is never constructed
+  --> src/ui/board.rs:10:12
+   |
+10 | pub struct BoardUiOutput {
+   |            ^^^^^^^^^^^^^
+
+warning: function `board_pixel_size` is never used
+  --> src/ui/board.rs:16:8
+   |
+16 | pub fn board_pixel_size() -> f32 {
+   |        ^^^^^^^^^^^^^^^^
+
+warning: function `draw_board` is never used
+  --> src/ui/board.rs:20:8
+   |
+20 | pub fn draw_board(
+   |        ^^^^^^^^^^
+
+warning: function `paint_board_texture` is never used
+  --> src/ui/board.rs:78:4
+   |
+78 | fn paint_board_texture(painter: &egui::Painter, board_rect: Rect, assets: &UiAssets) {
+   |    ^^^^^^^^^^^^^^^^^^^
+
+warning: function `paint_board_grid` is never used
+  --> src/ui/board.rs:91:4
+   |
+91 | fn paint_board_grid(painter: &egui::Painter, board_rect: Rect) {
+   |    ^^^^^^^^^^^^^^^^
+
+warning: function `paint_square_overlay` is never used
+   --> src/ui/board.rs:111:4
+    |
+111 | fn paint_square_overlay(painter: &egui::Painter, cell_rect: Rect, game: &GameState, sq: Square) {
+    |    ^^^^^^^^^^^^^^^^^^^^
+
+warning: function `paint_piece` is never used
+   --> src/ui/board.rs:133:4
+    |
+133 | fn paint_piece(painter: &egui::Painter, cell_rect: Rect, piece: Piece, assets: &UiAssets) {
+    |    ^^^^^^^^^^^
+
+warning: function `square_from_ui` is never used
+   --> src/ui/board.rs:155:4
+    |
+155 | fn square_from_ui(row: usize, col: usize) -> Square {
+    |    ^^^^^^^^^^^^^^
+
+warning: function `square_at_pos` is never used
+   --> src/ui/board.rs:162:8
+    |
+162 | pub fn square_at_pos(board_rect: Rect, pos: egui::Pos2) -> Option<Square> {
+    |        ^^^^^^^^^^^^^
+
+warning: constant `HAND_GRID_COLS` is never used
+ --> src/ui/hand.rs:7:7
+  |
+7 | const HAND_GRID_COLS: usize = 3;
+  |       ^^^^^^^^^^^^^^
+
+warning: constant `HAND_GRID_ROWS` is never used
+ --> src/ui/hand.rs:8:7
+  |
+8 | const HAND_GRID_ROWS: usize = 3;
+  |       ^^^^^^^^^^^^^^
+
+warning: constant `HAND_GRID_GAP` is never used
+ --> src/ui/hand.rs:9:7
+  |
+9 | const HAND_GRID_GAP: f32 = 6.0;
+  |       ^^^^^^^^^^^^^
+
+warning: constant `HAND_INNER_PAD` is never used
+  --> src/ui/hand.rs:10:7
+   |
+10 | const HAND_INNER_PAD: f32 = 8.0;
+   |       ^^^^^^^^^^^^^^
+
+warning: constant `HAND_PANEL_SIZE` is never used
+  --> src/ui/hand.rs:11:11
+   |
+11 | pub const HAND_PANEL_SIZE: f32 = 200.0;
+   |           ^^^^^^^^^^^^^^^
+
+warning: constant `HAND_GRID_SLOTS` is never used
+  --> src/ui/hand.rs:12:7
+   |
+12 | const HAND_GRID_SLOTS: [Option<PieceType>; HAND_GRID_COLS * HAND_GRID_ROWS] = [
+   |       ^^^^^^^^^^^^^^^
+
+warning: struct `HandUiOutput` is never constructed
+  --> src/ui/hand.rs:24:12
+   |
+24 | pub struct HandUiOutput {
+   |            ^^^^^^^^^^^^
+
+warning: enum `HandPanelAnchor` is never used
+  --> src/ui/hand.rs:30:10
+   |
+30 | pub enum HandPanelAnchor {
+   |          ^^^^^^^^^^^^^^^
+
+warning: function `draw_hand_panel` is never used
+  --> src/ui/hand.rs:35:8
+   |
+35 | pub fn draw_hand_panel(
+   |        ^^^^^^^^^^^^^^^
+
+warning: function `draw_hand_grid` is never used
+  --> src/ui/hand.rs:82:4
+   |
+82 | fn draw_hand_grid(
+   |    ^^^^^^^^^^^^^^
+
+warning: function `draw_hand_cell` is never used
+   --> src/ui/hand.rs:141:4
+    |
+141 | fn draw_hand_cell(
+    |    ^^^^^^^^^^^^^^
+
+warning: function `draw_promotion_dialog` is never used
+ --> src/ui/promotion.rs:7:8
+  |
+7 | pub fn draw_promotion_dialog(
+  |        ^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `draw_choice_card` is never used
+  --> src/ui/promotion.rs:71:4
+   |
+71 | fn draw_choice_card(
+   |    ^^^^^^^^^^^^^^^^
+
+warning: `rshogi` (bin "rshogi") generated 39 warnings (run `cargo fix --bin "rshogi" -p rshogi` to apply 1 suggestion)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.93s

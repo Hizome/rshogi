@@ -1,0 +1,415 @@
+    Checking rshogi v0.1.0 (/home/harry/Play/rshogi)
+error[E0412]: cannot find type `WindowContext` in this scope
+   --> src/ui_gpui/board.rs:31:40
+    |
+ 31 |         on_click: impl Fn(Square, &mut WindowContext) + 'static + Copy,
+    |                                        ^^^^^^^^^^^^^ help: a struct with a similar name exists: `WindowControls`
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/platform.rs:400:1
+    |
+400 | pub struct WindowControls {
+    | ------------------------- similarly named struct `WindowControls` defined here
+
+error[E0412]: cannot find type `WindowContext` in this scope
+   --> src/ui_gpui/board.rs:32:60
+    |
+ 32 |         on_drag_start: impl Fn(Square, Point<Pixels>, &mut WindowContext) + 'static + Copy,
+    |                                                            ^^^^^^^^^^^^^ help: a struct with a similar name exists: `WindowControls`
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/platform.rs:400:1
+    |
+400 | pub struct WindowControls {
+    | ------------------------- similarly named struct `WindowControls` defined here
+
+error[E0412]: cannot find type `WindowContext` in this scope
+   --> src/ui_gpui/board.rs:33:51
+    |
+ 33 |         on_drag_move: impl Fn(Point<Pixels>, &mut WindowContext) + 'static + Copy,
+    |                                                   ^^^^^^^^^^^^^ help: a struct with a similar name exists: `WindowControls`
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/platform.rs:400:1
+    |
+400 | pub struct WindowControls {
+    | ------------------------- similarly named struct `WindowControls` defined here
+
+error[E0412]: cannot find type `WindowContext` in this scope
+   --> src/ui_gpui/board.rs:34:39
+    |
+ 34 |         on_drop: impl Fn(Square, &mut WindowContext) + 'static + Copy,
+    |                                       ^^^^^^^^^^^^^ help: a struct with a similar name exists: `WindowControls`
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/platform.rs:400:1
+    |
+400 | pub struct WindowControls {
+    | ------------------------- similarly named struct `WindowControls` defined here
+
+error[E0412]: cannot find type `WindowContext` in this scope
+   --> src/ui_gpui/board.rs:35:18
+    |
+ 35 |         cx: &mut WindowContext,
+    |                  ^^^^^^^^^^^^^ help: a struct with a similar name exists: `WindowControls`
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/platform.rs:400:1
+    |
+400 | pub struct WindowControls {
+    | ------------------------- similarly named struct `WindowControls` defined here
+
+error[E0412]: cannot find type `WindowContext` in this scope
+   --> src/ui_gpui/hand.rs:40:43
+    |
+ 40 |         on_click: impl Fn(PieceType, &mut WindowContext) + 'static + Copy,
+    |                                           ^^^^^^^^^^^^^ help: a struct with a similar name exists: `WindowControls`
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/platform.rs:400:1
+    |
+400 | pub struct WindowControls {
+    | ------------------------- similarly named struct `WindowControls` defined here
+
+error[E0412]: cannot find type `WindowContext` in this scope
+   --> src/ui_gpui/hand.rs:41:63
+    |
+ 41 |         on_drag_start: impl Fn(PieceType, Point<Pixels>, &mut WindowContext) + 'static + Copy,
+    |                                                               ^^^^^^^^^^^^^ help: a struct with a similar name exists: `WindowControls`
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/platform.rs:400:1
+    |
+400 | pub struct WindowControls {
+    | ------------------------- similarly named struct `WindowControls` defined here
+
+error[E0412]: cannot find type `WindowContext` in this scope
+   --> src/ui_gpui/hand.rs:42:51
+    |
+ 42 |         on_drag_move: impl Fn(Point<Pixels>, &mut WindowContext) + 'static + Copy,
+    |                                                   ^^^^^^^^^^^^^ help: a struct with a similar name exists: `WindowControls`
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/platform.rs:400:1
+    |
+400 | pub struct WindowControls {
+    | ------------------------- similarly named struct `WindowControls` defined here
+
+error[E0412]: cannot find type `WindowContext` in this scope
+   --> src/ui_gpui/hand.rs:43:34
+    |
+ 43 |         on_release: impl Fn(&mut WindowContext) + 'static + Copy,
+    |                                  ^^^^^^^^^^^^^ help: a struct with a similar name exists: `WindowControls`
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/platform.rs:400:1
+    |
+400 | pub struct WindowControls {
+    | ------------------------- similarly named struct `WindowControls` defined here
+
+error[E0412]: cannot find type `WindowContext` in this scope
+   --> src/ui_gpui/hand.rs:44:18
+    |
+ 44 |         cx: &mut WindowContext,
+    |                  ^^^^^^^^^^^^^ help: a struct with a similar name exists: `WindowControls`
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/platform.rs:400:1
+    |
+400 | pub struct WindowControls {
+    | ------------------------- similarly named struct `WindowControls` defined here
+
+error[E0425]: cannot find function `v_flex` in this scope
+   --> src/ui_gpui/hand.rs:135:9
+    |
+135 |         v_flex()
+    |         ^^^^^^ not found in this scope
+    |
+help: consider importing this function
+    |
+  1 + use gpui_component::v_flex;
+    |
+
+error[E0425]: cannot find function `v_flex` in this scope
+   --> src/ui_gpui/hand.rs:163:17
+    |
+163 |                 v_flex()
+    |                 ^^^^^^ not found in this scope
+    |
+help: consider importing this function
+    |
+  1 + use gpui_component::v_flex;
+    |
+
+error[E0412]: cannot find type `WindowContext` in this scope
+   --> src/ui_gpui/promotion.rs:23:34
+    |
+ 23 |         on_promote: impl Fn(&mut WindowContext) + 'static + Copy,
+    |                                  ^^^^^^^^^^^^^ help: a struct with a similar name exists: `WindowControls`
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/platform.rs:400:1
+    |
+400 | pub struct WindowControls {
+    | ------------------------- similarly named struct `WindowControls` defined here
+
+error[E0412]: cannot find type `WindowContext` in this scope
+   --> src/ui_gpui/promotion.rs:24:33
+    |
+ 24 |         on_cancel: impl Fn(&mut WindowContext) + 'static + Copy,
+    |                                 ^^^^^^^^^^^^^ help: a struct with a similar name exists: `WindowControls`
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/platform.rs:400:1
+    |
+400 | pub struct WindowControls {
+    | ------------------------- similarly named struct `WindowControls` defined here
+
+error[E0412]: cannot find type `WindowContext` in this scope
+   --> src/ui_gpui/promotion.rs:25:32
+    |
+ 25 |         on_close: impl Fn(&mut WindowContext) + 'static + Copy,
+    |                                ^^^^^^^^^^^^^ help: a struct with a similar name exists: `WindowControls`
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/platform.rs:400:1
+    |
+400 | pub struct WindowControls {
+    | ------------------------- similarly named struct `WindowControls` defined here
+
+error[E0425]: cannot find function `v_flex` in this scope
+  --> src/ui_gpui/promotion.rs:37:17
+   |
+37 |                 v_flex()
+   |                 ^^^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+ 1 + use gpui_component::v_flex;
+   |
+
+error[E0425]: cannot find function `h_flex` in this scope
+  --> src/ui_gpui/promotion.rs:47:25
+   |
+47 |                         h_flex()
+   |                         ^^^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+ 1 + use gpui_component::h_flex;
+   |
+
+error[E0425]: cannot find function `h_flex` in this scope
+  --> src/ui_gpui/promotion.rs:67:25
+   |
+67 |                         h_flex()
+   |                         ^^^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+ 1 + use gpui_component::h_flex;
+   |
+
+warning: unused import: `gpui::prelude::FluentBuilder as _`
+ --> src/ui_gpui/promotion.rs:2:5
+  |
+2 | use gpui::prelude::FluentBuilder as _;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+error[E0593]: closure is expected to take 3 arguments, but it takes 2 arguments
+  --> src/ui_gpui/board.rs:76:26
+   |
+76 |                         .on_mouse_down(MouseButton::Left, move |e, cx| {
+   |                          ^^^^^^^^^^^^^                    ------------ takes 2 arguments
+   |                          |
+   |                          expected closure that takes 3 arguments
+
+error[E0593]: closure is expected to take 3 arguments, but it takes 2 arguments
+  --> src/ui_gpui/board.rs:81:26
+   |
+81 |                         .on_mouse_move(move |e, cx| {
+   |                          ^^^^^^^^^^^^^ ------------ takes 2 arguments
+   |                          |
+   |                          expected closure that takes 3 arguments
+
+error[E0593]: closure is expected to take 3 arguments, but it takes 2 arguments
+  --> src/ui_gpui/board.rs:84:26
+   |
+84 |                         .on_mouse_up(MouseButton::Left, move |_, cx| {
+   |                          ^^^^^^^^^^^                    ------------ takes 2 arguments
+   |                          |
+   |                          expected closure that takes 3 arguments
+
+error[E0593]: closure is expected to take 3 arguments, but it takes 2 arguments
+  --> src/ui_gpui/board.rs:87:26
+   |
+87 |                         .on_click(move |_, cx| {
+   |                          ^^^^^^^^ ------------ takes 2 arguments
+   |                          |
+   |                          expected closure that takes 3 arguments
+
+error[E0599]: no method named `when_some` found for struct `Stateful<E>` in the current scope
+  --> src/ui_gpui/board.rs:90:26
+   |
+66 | /                     div()
+67 | |                         .id(cell_id)
+68 | |                         .w(px(self.square_size))
+69 | |                         .h(px(self.square_size))
+...  |
+89 | |                         })
+90 | |                         .when_some(piece, |this, p| this.child(self.render_piece(p, self.square_size * 0.85)))
+   | |_________________________-^^^^^^^^^
+   |
+  ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/util.rs:44:8
+   |
+44 |       fn when_some<T>(self, option: Option<T>, then: impl FnOnce(Self, T) -> Self) -> Self
+   |          --------- the method is available for `Stateful<gpui::Div>` here
+   |
+   = help: items from traits can only be used if the trait is in scope
+help: trait `FluentBuilder` which provides `when_some` is implemented but not in scope; perhaps you want to import it
+   |
+ 1 + use gpui::prelude::FluentBuilder;
+   |
+help: there is a method `when_none` with a similar name
+   |
+90 -                         .when_some(piece, |this, p| this.child(self.render_piece(p, self.square_size * 0.85)))
+90 +                         .when_none(piece, |this, p| this.child(self.render_piece(p, self.square_size * 0.85)))
+   |
+
+error[E0282]: type annotations needed
+  --> src/ui_gpui/board.rs:90:44
+   |
+90 |                         .when_some(piece, |this, p| this.child(self.render_piece(p, self.square_size * 0.85)))
+   |                                            ^^^^     ---- type must be known at this point
+   |
+help: consider giving this closure parameter an explicit type
+   |
+90 |                         .when_some(piece, |this: /* Type */, p| this.child(self.render_piece(p, self.square_size * 0.85)))
+   |                                                ++++++++++++
+
+error[E0593]: closure is expected to take 3 arguments, but it takes 2 arguments
+  --> src/ui_gpui/hand.rs:89:22
+   |
+89 |                     .on_mouse_down(MouseButton::Left, move |e, cx| {
+   |                      ^^^^^^^^^^^^^                    ------------ takes 2 arguments
+   |                      |
+   |                      expected closure that takes 3 arguments
+
+error[E0593]: closure is expected to take 3 arguments, but it takes 2 arguments
+  --> src/ui_gpui/hand.rs:94:23
+   |
+94 |                      .on_mouse_move(move |e, cx| {
+   |                       ^^^^^^^^^^^^^ ------------ takes 2 arguments
+   |                       |
+   |                       expected closure that takes 3 arguments
+
+error[E0593]: closure is expected to take 3 arguments, but it takes 2 arguments
+  --> src/ui_gpui/hand.rs:97:22
+   |
+97 |                     .on_mouse_up(MouseButton::Left, move |_, cx| {
+   |                      ^^^^^^^^^^^                    ------------ takes 2 arguments
+   |                      |
+   |                      expected closure that takes 3 arguments
+
+error[E0593]: closure is expected to take 3 arguments, but it takes 2 arguments
+   --> src/ui_gpui/hand.rs:100:22
+    |
+100 |                     .on_click(move |_, cx| {
+    |                      ^^^^^^^^ ------------ takes 2 arguments
+    |                      |
+    |                      expected closure that takes 3 arguments
+
+error[E0599]: no method named `when` found for struct `Stateful<E>` in the current scope
+   --> src/ui_gpui/hand.rs:105:22
+    |
+ 79 | /                 div()
+ 80 | |                     .id(cell_id)
+ 81 | |                     .w(px(self.cell_size))
+ 82 | |                     .h(px(self.cell_size))
+...   |
+104 | |                     })
+105 | |                     .when(count > 0 || is_selected, |this| {
+    | |                     -^^^^ method not found in `Stateful<gpui::Div>`
+    | |_____________________|
+    |
+    |
+   ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-0.2.2/src/util.rs:23:8
+    |
+ 23 |       fn when(self, condition: bool, then: impl FnOnce(Self) -> Self) -> Self
+    |          ---- the method is available for `Stateful<gpui::Div>` here
+    |
+    = help: items from traits can only be used if the trait is in scope
+help: trait `FluentBuilder` which provides `when` is implemented but not in scope; perhaps you want to import it
+    |
+  1 + use gpui::prelude::FluentBuilder;
+    |
+
+error[E0282]: type annotations needed
+   --> src/ui_gpui/hand.rs:105:54
+    |
+105 |                     .when(count > 0 || is_selected, |this| {
+    |                                                      ^^^^
+106 |                         this.child(self.render_piece(
+    |                         ---- type must be known at this point
+    |
+help: consider giving this closure parameter an explicit type
+    |
+105 |                     .when(count > 0 || is_selected, |this: /* Type */| {
+    |                                                          ++++++++++++
+
+error[E0282]: type annotations needed
+   --> src/ui_gpui/hand.rs:114:39
+    |
+114 |                     .when(count > 0, |this| {
+    |                                       ^^^^
+115 |                         this.child(
+    |                         ---- type must be known at this point
+    |
+help: consider giving this closure parameter an explicit type
+    |
+114 |                     .when(count > 0, |this: /* Type */| {
+    |                                           ++++++++++++
+
+error[E0599]: no method named `primary` found for struct `gpui_component::button::Button` in the current scope
+  --> src/ui_gpui/promotion.rs:72:38
+   |
+71 | / ...                   Button::new("promote-yes")
+72 | | ...                       .primary()
+   | |                           -^^^^^^^ method not found in `gpui_component::button::Button`
+   | |___________________________|
+   |
+   |
+  ::: /home/harry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/gpui-component-0.5.1/src/button/button.rs:44:8
+   |
+44 |       fn primary(self) -> Self {
+   |          ------- the method is available for `gpui_component::button::Button` here
+   |
+   = help: items from traits can only be used if the trait is in scope
+help: trait `ButtonVariants` which provides `primary` is implemented but not in scope; perhaps you want to import it
+   |
+ 1 + use gpui_component::button::ButtonVariants;
+   |
+
+error[E0593]: closure is expected to take 3 arguments, but it takes 2 arguments
+  --> src/ui_gpui/promotion.rs:79:38
+   |
+79 | ...                   .on_click(move |_, cx| on_cancel(cx)),
+   |                        ^^^^^^^^ ------------ takes 2 arguments
+   |                        |
+   |                        expected closure that takes 3 arguments
+
+error[E0593]: closure is expected to take 3 arguments, but it takes 2 arguments
+  --> src/ui_gpui/promotion.rs:84:38
+   |
+84 | ...                   .on_click(move |_, cx| on_close(cx)),
+   |                        ^^^^^^^^ ------------ takes 2 arguments
+   |                        |
+   |                        expected closure that takes 3 arguments
+
+warning: unused variable: `x`
+   --> src/ui_gpui/board.rs:144:13
+    |
+144 |         let x = col as f32 * self.square_size - 3.0; // Minus half dot size
+    |             ^ help: if this is intentional, prefix it with an underscore: `_x`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `y`
+   --> src/ui_gpui/board.rs:145:13
+    |
+145 |         let y = row as f32 * self.square_size - 3.0;
+    |             ^ help: if this is intentional, prefix it with an underscore: `_y`
+
+Some errors have detailed explanations: E0282, E0412, E0425, E0593, E0599.
+For more information about an error, try `rustc --explain E0282`.
+warning: `rshogi` (bin "rshogi") generated 3 warnings
+error: could not compile `rshogi` (bin "rshogi") due to 34 previous errors; 3 warnings emitted
