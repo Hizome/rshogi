@@ -79,6 +79,8 @@ pub enum BoardWallpaper {
     Kaya2,
     Wood,
     Wood1,
+    Wood026,
+    Wood066,
     Kinkaku,
     Painting1,
     Painting2,
@@ -88,13 +90,15 @@ pub enum BoardWallpaper {
 }
 
 impl BoardWallpaper {
-    pub fn all() -> [Self; 11] {
+    pub fn all() -> [Self; 13] {
         [
             Self::Oak,
             Self::Kaya1,
             Self::Kaya2,
             Self::Wood,
             Self::Wood1,
+            Self::Wood026,
+            Self::Wood066,
             Self::Kinkaku,
             Self::Painting1,
             Self::Painting2,
@@ -111,6 +115,8 @@ impl BoardWallpaper {
             Self::Kaya2 => "Kaya 2",
             Self::Wood => "Wood",
             Self::Wood1 => "Wood 1",
+            Self::Wood026 => "Wood 026",
+            Self::Wood066 => "Wood 066",
             Self::Kinkaku => "Kinkaku",
             Self::Painting1 => "Painting 1",
             Self::Painting2 => "Painting 2",
@@ -128,6 +134,8 @@ pub fn board_asset_path(board: BoardWallpaper) -> &'static str {
         BoardWallpaper::Kaya2 => "boards/lishogi/kaya2.jpg",
         BoardWallpaper::Wood => "boards/lishogi/wood.png",
         BoardWallpaper::Wood1 => "boards/lishogi/wood1.jpg",
+        BoardWallpaper::Wood026 => "boards/Wood026.jpg",
+        BoardWallpaper::Wood066 => "boards/Wood066.jpg",
         BoardWallpaper::Kinkaku => "boards/lishogi/kinkaku.jpg",
         BoardWallpaper::Painting1 => "boards/lishogi/painting1.jpg",
         BoardWallpaper::Painting2 => "boards/lishogi/painting2.jpg",

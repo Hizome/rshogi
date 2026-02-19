@@ -466,6 +466,7 @@ enum MoveChoice {
     None,
 }
 
+#[cfg(feature = "ui-egui")]
 pub fn piece_label(piece: Piece) -> String {
     let base = match piece.piece_type {
         PieceType::King => "K",

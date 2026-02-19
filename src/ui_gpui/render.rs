@@ -399,21 +399,21 @@ impl GpuiP1Shell {
                     .flex()
                     .items_center()
                     .justify_center()
-                    .border_r_1()
-                    .border_b_1()
-                    .border_color(hsla(0.0, 0.0, 0.05, 0.68))
+                    .border_r(px(1.8))
+                    .border_b(px(1.8))
+                    .border_color(hsla(0.0, 0.0, 0.0, 1.0))
                     .bg(self.square_bg(sq))
                     .text_color(cx.theme().foreground);
                 if Self::has_star_point_at_top_left_corner(rank, file) {
                     cell = cell.child(
                         div()
                             .absolute()
-                            .left(px(-3.2))
-                            .top(px(-3.2))
-                            .w(px(6.4))
-                            .h(px(6.4))
+                            .left(px(-4.2))
+                            .top(px(-4.2))
+                            .w(px(8.4))
+                            .h(px(8.4))
                             .rounded_full()
-                            .bg(hsla(0.0, 0.0, 0.02, 0.96)),
+                            .bg(hsla(0.0, 0.0, 0.0, 1.0)),
                     );
                 }
                 let dragging_from_sq = matches!(
