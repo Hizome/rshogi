@@ -320,8 +320,15 @@ impl GpuiP1Shell {
         col
     }
 
-    fn has_star_point_at_top_left_corner(ui_row: u8, ui_col: u8) -> bool {
-        matches!((ui_row, ui_col), (3, 3) | (3, 6) | (6, 3) | (6, 6))
+    fn has_star_point_left_anchor(ui_row: u8, ui_col: u8) -> bool {
+        // Right-side stars stay on the current cell top-left corner.
+        matches!((ui_row, ui_col), (3, 6) | (6, 6))
+    }
+
+    fn has_star_point_right_anchor(ui_row: u8, ui_col: u8) -> bool {
+        // Left-side stars are mirrored: anchor on current cell top-right corner,
+        // which is visually equivalent to using the neighbor cell's top-left.
+        matches!((ui_row, ui_col), (3, 2) | (6, 2))
     }
 
     fn render_top_file_coords(&self, board_px: f32) -> impl IntoElement {
@@ -404,12 +411,24 @@ impl GpuiP1Shell {
                     .border_color(hsla(0.0, 0.0, 0.0, 1.0))
                     .bg(self.square_bg(sq))
                     .text_color(cx.theme().foreground);
-                if Self::has_star_point_at_top_left_corner(rank, file) {
+                if Self::has_star_point_left_anchor(rank, file) {
                     cell = cell.child(
                         div()
                             .absolute()
                             .left(px(-4.2))
                             .top(px(-4.2))
+                            .w(px(8.4))
+                            .h(px(8.4))
+                            .rounded_full()
+                            .bg(hsla(0.0, 0.0, 0.0, 1.0)),
+                    );
+                }
+                if Self::has_star_point_right_anchor(rank, file) {
+                    cell = cell.child(
+                        div()
+                            .absolute()
+                            .left(px(CELL_PX - 7.2))
+                            .top(px(-5.2))
                             .w(px(8.4))
                             .h(px(8.4))
                             .rounded_full()
@@ -467,8 +486,6 @@ impl GpuiP1Shell {
             .h(px(board_px))
             .flex_shrink_0()
             .overflow_hidden()
-            .border_2()
-            .border_color(hsla(0.0, 0.0, 0.1, 0.95))
             .child(
                 img(board_asset_path(self.board_wallpaper))
                     .absolute()
