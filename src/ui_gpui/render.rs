@@ -15,6 +15,80 @@ use super::model::{
 };
 
 impl GpuiP1Shell {
+    fn paint_disc(window: &mut Window, center: Point<Pixels>, radius: f32, color: Hsla) {
+        let segments = 36usize;
+        let mut path = PathBuilder::fill();
+        for i in 0..segments {
+            let t = std::f32::consts::TAU * (i as f32 / segments as f32);
+            let x = center.x + px(radius * t.cos());
+            let y = center.y + px(radius * t.sin());
+            if i == 0 {
+                path.move_to(point(x, y));
+            } else {
+                path.line_to(point(x, y));
+            }
+        }
+        path.close();
+        if let Ok(shape) = path.build() {
+            window.paint_path(shape, color);
+        }
+    }
+
+    fn render_board_grid_overlay(&self, board_px: f32) -> AnyElement {
+        #[derive(Clone, Copy)]
+        struct GridPrepaint {
+            board_px: f32,
+        }
+
+        div()
+            .absolute()
+            .left_0()
+            .top_0()
+            .w(px(board_px))
+            .h(px(board_px))
+            .child(
+                canvas(
+                    move |_, _, _| GridPrepaint { board_px },
+                    move |bounds, prepaint, window, _| {
+                        let origin = bounds.origin;
+                        let stroke = px(1.8);
+                        let line_color = hsla(0.0, 0.0, 0.0, 1.0);
+
+                        for idx in 0..=BOARD_SIZE {
+                            let x = origin.x + px(idx as f32 * CELL_PX);
+                            let y = origin.y + px(idx as f32 * CELL_PX);
+
+                            let mut vline = PathBuilder::stroke(stroke);
+                            vline.move_to(point(x, origin.y));
+                            vline.line_to(point(x, origin.y + px(prepaint.board_px)));
+                            if let Ok(path) = vline.build() {
+                                window.paint_path(path, line_color);
+                            }
+
+                            let mut hline = PathBuilder::stroke(stroke);
+                            hline.move_to(point(origin.x, y));
+                            hline.line_to(point(origin.x + px(prepaint.board_px), y));
+                            if let Ok(path) = hline.build() {
+                                window.paint_path(path, line_color);
+                            }
+                        }
+
+                        for ix in [3u8, 6u8] {
+                            for iy in [3u8, 6u8] {
+                                let center = point(
+                                    origin.x + px(ix as f32 * CELL_PX),
+                                    origin.y + px(iy as f32 * CELL_PX),
+                                );
+                                GpuiP1Shell::paint_disc(window, center, 4.2, line_color);
+                            }
+                        }
+                    },
+                )
+                .size_full(),
+            )
+            .into_any_element()
+    }
+
     fn render_promotion_overlay(&self, board_px: f32, cx: &mut Context<Self>) -> AnyElement {
         if !self.game.has_pending_promotion() {
             return div().into_any_element();
@@ -320,17 +394,6 @@ impl GpuiP1Shell {
         col
     }
 
-    fn has_star_point_left_anchor(ui_row: u8, ui_col: u8) -> bool {
-        // Right-side stars stay on the current cell top-left corner.
-        matches!((ui_row, ui_col), (3, 6) | (6, 6))
-    }
-
-    fn has_star_point_right_anchor(ui_row: u8, ui_col: u8) -> bool {
-        // Left-side stars are mirrored: anchor on current cell top-right corner,
-        // which is visually equivalent to using the neighbor cell's top-left.
-        matches!((ui_row, ui_col), (3, 2) | (6, 2))
-    }
-
     fn render_top_file_coords(&self, board_px: f32) -> impl IntoElement {
         let mut row = h_flex()
             .absolute()
@@ -406,35 +469,8 @@ impl GpuiP1Shell {
                     .flex()
                     .items_center()
                     .justify_center()
-                    .border_r(px(1.8))
-                    .border_b(px(1.8))
-                    .border_color(hsla(0.0, 0.0, 0.0, 1.0))
                     .bg(self.square_bg(sq))
                     .text_color(cx.theme().foreground);
-                if Self::has_star_point_left_anchor(rank, file) {
-                    cell = cell.child(
-                        div()
-                            .absolute()
-                            .left(px(-4.2))
-                            .top(px(-4.2))
-                            .w(px(8.4))
-                            .h(px(8.4))
-                            .rounded_full()
-                            .bg(hsla(0.0, 0.0, 0.0, 1.0)),
-                    );
-                }
-                if Self::has_star_point_right_anchor(rank, file) {
-                    cell = cell.child(
-                        div()
-                            .absolute()
-                            .left(px(CELL_PX - 7.2))
-                            .top(px(-5.2))
-                            .w(px(8.4))
-                            .h(px(8.4))
-                            .rounded_full()
-                            .bg(hsla(0.0, 0.0, 0.0, 1.0)),
-                    );
-                }
                 let dragging_from_sq = matches!(
                     self.drag,
                     Some(DragState {
@@ -495,6 +531,7 @@ impl GpuiP1Shell {
                     .h_full()
                     .object_fit(ObjectFit::Fill),
             )
+            .child(self.render_board_grid_overlay(board_px))
             .child(div().relative().w_full().h_full().child(board))
             .child(self.render_promotion_overlay(board_px, cx));
 
